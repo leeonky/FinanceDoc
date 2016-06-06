@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<parcel language="Python" xmlns:parcel="scripting.dtd">
+    <script language="Python">
+        <locale lang="en">
+            <displayname value="framework_launcher.py"/>
+            <description>framework_launcher.py</description>
+        </locale>
+        <logicalname value="framework_launcher.py"/>
+        <functionname value="framework_launcher.py"/>
+    </script>
+</parcel>
