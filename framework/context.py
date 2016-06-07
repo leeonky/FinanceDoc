@@ -20,3 +20,9 @@ class Context:
 		if command in Context.command_handlers:
 			for handler in Context.command_handlers[command]:
 				handler(arg)
+				
+	@staticmethod
+	def import_root(model):
+		tmp_path = os.path.dirname(sys.modules[__name__].__file__) + '/../' + model
+		imp.load_source('module.name', tmp_path).define(context)
+		
