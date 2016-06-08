@@ -1,28 +1,25 @@
 class Context:
-	document = None
-	@staticmethod
-	def set_document(doc):
-		Context.document = doc 
-	@staticmethod
-	def get_document():
-		return Context.document
+	def __init__(self):
+		self.document = None
+		self.command_handlers = {}
 
-	command_handlers = {}
-	@staticmethod
-	def add_app_handler(command, handler):
-		if command not in Context.command_handlers:
-			Context.command_handlers[command] = []
-		Context.command_handlers[command].append(handler)
+	def set_document(self, doc):
+		self.document = doc
 
-	@staticmethod
-	def invoke(arg):
+	def get_document(self):
+		return self.document
+
+	def add_app_handler(self, command, handler):
+		if command not in self.command_handlers:
+			self.command_handlers[command] = []
+		self.command_handlers[command].append(handler)
+
+	def invoke(self, arg):
 		command = type(arg).__name__
-		if command in Context.command_handlers:
-			for handler in Context.command_handlers[command]:
+		if command in self.command_handlers:
+			for handler in self.command_handlers[command]:
 				handler(arg)
 				
-	@staticmethod
-	def import_root(model):
+	def import_root(self, model):
 		tmp_path = os.path.dirname(sys.modules[__name__].__file__) + '/../' + model
 		imp.load_source('module.name', tmp_path).define(context)
-		
