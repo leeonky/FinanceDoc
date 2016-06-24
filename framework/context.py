@@ -1,13 +1,13 @@
 class Context:
-	def __init__(self):
-		self.document = None
-		self.command_handlers = {}
-
 	def set_document(self, doc):
 		self.document = doc
 
 	def get_document(self):
 		return self.document
+
+	def __init__(self):
+		self.document = None
+		self.command_handlers = {}
 
 	def add_app_handler(self, command, handler):
 		if command not in self.command_handlers:

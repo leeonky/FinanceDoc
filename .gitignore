@@ -1,3 +1,4 @@
 *.pyc
 *.ods#
 .session.vim
+.cache
