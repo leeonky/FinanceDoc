@@ -19,7 +19,7 @@ class Context:
 		if command in self.command_handlers:
 			for handler in self.command_handlers[command]:
 				handler(arg)
-				
-	def import_root(self, model):
+
+	def import_file(self, model):
 		tmp_path = os.path.dirname(sys.modules[__name__].__file__) + '/../' + model
 		imp.load_source('module.name', tmp_path).define(context)

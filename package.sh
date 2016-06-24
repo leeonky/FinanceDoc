@@ -1,3 +1,3 @@
 rm app.ods
 cd app
-zip -r ../app.ods * -x \*.swp
+zip -r ../main.ods * -x \*.swp
