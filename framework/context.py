@@ -7,18 +7,17 @@ class Context:
 
 	def __init__(self):
 		self.document = None
-		self.command_handlers = {}
+		self.handlers = {}
 
-	def add_app_handler(self, command, handler):
-		if command not in self.command_handlers:
-			self.command_handlers[command] = []
-		self.command_handlers[command].append(handler)
+	def add_app_handler(self, command, name, handler):
+		self.handlers.setdefault(command, {})
+		self.handlers[command].setdefault(name, [])
+		self.handlers[command][name].append(handler)
 
 	def invoke(self, arg):
-		command = type(arg).__name__
-		if command in self.command_handlers:
-			for handler in self.command_handlers[command]:
-				handler(arg)
+		for handler in self.handlers.get(type(arg).__name__, {}) \
+				.get(arg.Source.Model.Name, []):
+			handler(arg)
 
 	def import_file(self, model):
 		tmp_path = os.path.dirname(sys.modules[__name__].__file__) + '/../' + model
