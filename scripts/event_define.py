@@ -5,6 +5,7 @@ import os
 import sys
 
 def define(context):
+
 	def test_method(arg):
 		oSheet = context.get_document().CurrentController.ActiveSheet
 		oCell1 = oSheet.getCellRangeByName("A2")

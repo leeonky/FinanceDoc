@@ -20,5 +20,5 @@ class Context:
 			handler(arg)
 
 	def import_file(self, model):
-		tmp_path = os.path.dirname(sys.modules[__name__].__file__) + '/../' + model
+		tmp_path = os.path.dirname(os.path.dirname(sys.modules[__name__].__file__)) + '/scripts/' + model
 		imp.load_source('module.name', tmp_path).define(context)
