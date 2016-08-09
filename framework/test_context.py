@@ -74,5 +74,5 @@ class TestContext(unittest.TestCase):
 		self.target_method1.assert_called_with(event_arg)
 		self.target_method2.assert_not_called()
 
-if __name__ == '__main__':
-	unittest.main()
+# if __name__ == '__main__':
+	# unittest.main()
